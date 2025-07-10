@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sohaib Ali | Node.js Backend Developer</title>
+    <!-- Chosen Palette: Dark Slate & Cyan -->
+    <!-- Application Structure Plan: A dark-themed, single-page application with a fixed top navigation. The structure is designed to tell a story of backend expertise: 1) A hero section with a "code terminal" feel to immediately establish the Node.js developer identity. 2) A "Core Competencies" section using cards to detail skills in API development, databases, and real-time apps. 3) A filterable project gallery as the central focus, allowing deep exploration of backend and full-stack work. 4) A chronological experience timeline. This structure is ideal for a backend role, as it prioritizes technical skills and project details over visual-heavy elements. -->
+    <!-- Visualization & Content Choices: 
+        - Projects -> Goal: Showcase & Organize -> Viz: A filterable grid of project cards with a subtle glow-on-hover effect. Interaction: Filter buttons ('Node.js', 'Full-Stack', 'Real-time') allow recruiters to instantly isolate relevant projects. Justification: Provides a clear, interactive way to navigate a large project list and assess specific backend skills.
+        - Skills -> Goal: Inform/Organize -> Viz: Icon-based feature cards with detailed descriptions. Interaction: Hover effects. Justification: Clearly communicates technical capabilities and areas of specialization without needing charts or graphs.
+        - Experience -> Goal: Show Progression -> Viz: A minimalist vertical timeline with a distinct "terminal" style. Justification: Presents career history in a way that is consistent with the overall tech-focused design theme.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #22d3ee;
+        }
+        .nav-link.active {
+            color: #22d3ee;
+            font-weight: 500;
+        }
+        .project-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+            border-color: #22d3ee;
+        }
+        .project-filter-btn {
+            border: 1px solid #30363d;
+            transition: all 0.2s ease-in-out;
+        }
+        .project-filter-btn:hover {
+             border-color: #22d3ee;
+             color: #22d3ee;
+        }
+        .project-filter-btn.active {
+            background-color: #22d3ee;
+            color: #0d1117;
+            border-color: #22d3ee;
+            font-weight: 500;
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-900">
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#0d1117]/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-mono text-xl font-bold text-white">SohaibAli</a>
+            <div class="hidden md:flex items-center space-x-8 text-slate-400">
+                <a href="#competencies" class="nav-link">Competencies</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="mailto:sohaibali9243@gmail.com" class="bg-cyan-500/10 border border-cyan-500 text-cyan-400 font-semibold py-2 px-4 rounded-md hover:bg-cyan-500/20 transition-colors">
+                    Contact
+                </a>
+            </div>
+             <button id="mobile-menu-button" class="md:hidden text-slate-300">
+                <span class="text-2xl">☰</span>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0d1117] border-t border-slate-800">
+            <a href="#competencies" class="block py-3 px-6 text-slate-300 hover:bg-slate-800">Competencies</a>
+            <a href="#projects" class="block py-3 px-6 text-slate-300 hover:bg-slate-800">Projects</a>
+            <a href="#experience" class="block py-3 px-6 text-slate-300 hover:bg-slate-800">Experience</a>
+            <a href="mailto:sohaibali9243@gmail.com" class="block py-3 px-6 text-slate-300 hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="about" class="text-center py-24 md:py-32">
+            <h1 class="font-mono text-3xl md:text-5xl font-bold text-white leading-tight">
+                Node.js Backend Developer
+            </h1>
+            <p class="mt-4 text-cyan-400 text-lg">// Building fast, scalable, and reliable server-side applications.</p>
+            <p class="mt-8 max-w-2xl mx-auto text-lg text-slate-400">
+                With a strong foundation in JavaScript and TypeScript, I specialize in developing robust backend systems using Node.js and Express. From designing RESTful APIs and managing databases to building real-time applications with WebSockets, I am passionate about creating the powerful engines that drive modern web experiences.
+            </p>
+        </section>
+
+        <!-- Competencies Section -->
+        <section id="competencies" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="font-mono text-3xl font-bold text-white">Core Competencies</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border border-slate-800 p-8 rounded-lg fade-in">
+                    <h3 class="font-mono text-xl font-bold text-cyan-400 mb-2">> API Development</h3>
+                    <p class="text-slate-400">Designing and building secure, efficient, and well-documented RESTful APIs using Node.js and Express to serve data to client-side applications.</p>
+                </div>
+                <div class="border border-slate-800 p-8 rounded-lg fade-in" style="transition-delay: 150ms;">
+                    <h3 class="font-mono text-xl font-bold text-cyan-400 mb-2">> Database Management</h3>
+                    <p class="text-slate-400">Working with both SQL (MySQL) and NoSQL (MongoDB) databases to model data, write efficient queries, and ensure data integrity.</p>
+                </div>
+                <div class="border border-slate-800 p-8 rounded-lg fade-in" style="transition-delay: 300ms;">
+                    <h3 class="font-mono text-xl font-bold text-cyan-400 mb-2">> Real-time Applications</h3>
+                    <p class="text-slate-400">Implementing real-time functionality using WebSockets (Socket.io) for applications like live chats and notifications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="font-mono text-3xl font-bold text-white">Project Directory</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-slate-400">A directory of my backend and full-stack projects. Use the filters to navigate.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button class="project-filter-btn active py-2 px-5 rounded-md text-sm text-slate-300" data-filter="all">./all</button>
+                <button class="project-filter-btn py-2 px-5 rounded-md text-sm text-slate-300" data-filter="node.js">./node.js</button>
+                <button class="project-filter-btn py-2 px-5 rounded-md text-sm text-slate-300" data-filter="full-stack">./full-stack</button>
+                <button class="project-filter-btn py-2 px-5 rounded-md text-sm text-slate-300" data-filter="real-time">./real-time</button>
+            </div>
+
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projects will be populated here by JS -->
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 md:py-24">
+            <div class="text-center mb-16">
+                <h2 class="font-mono text-3xl font-bold text-white">Career Log</h2>
+            </div>
+            <div class="relative max-w-2xl mx-auto border-l-2 border-slate-800">
+                <!-- Timeline items will be populated here by JS -->
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h3 class="font-mono text-2xl font-bold text-white">sohaibali9243@gmail.com</h3>
+            <p class="mt-2 text-slate-400">Open to new opportunities and collaborations.</p>
+            <div class="mt-8 text-xs text-slate-500 font-mono">
+                <p>Designed & Built by Sohaib Ali</p>
+                <p class="mt-1">Last updated: July 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- DATA ---
+        const projectsData = [
+            {
+                title: 'E-learning Platform',
+                description: 'Built backend APIs to support Academy, Teacher, and Student dashboards, improving usability and engagement for over 1000 users.',
+                tags: ['node.js', 'full-stack'],
+                tech: ['Node.js', 'Express.js', 'MongoDB', 'Angular']
+            },
+            {
+                title: 'Chat Room App',
+                description: 'Built a real-time chat application using Node.js and Socket.io to handle live connections and messaging.',
+                tags: ['node.js', 'real-time'],
+                tech: ['Node.js', 'Socket.io', 'Express.js', 'JavaScript']
+            },
+            {
+                title: 'Rental Movies App',
+                description: 'Created a movie rental backend with user roles, CRUD operations, and secure JWT-based authentication.',
+                tags: ['node.js'],
+                tech: ['Node.js', 'MongoDB', 'JWT', 'Express.js']
+            },
+            {
+                title: 'Customer Core System',
+                description: 'Developed and maintained core backend modules like Invoice, Company, and User Management for a business-critical project.',
+                tags: ['node.js', 'full-stack'],
+                tech: ['Node.js', 'MongoDB', 'Express.js', 'Angular']
+            },
+            {
+                title: 'Electronic Equipment Services',
+                description: 'Developed key backend modules and core API functionalities, contributing to the project\'s overall efficiency and performance.',
+                tags: ['node.js', 'full-stack'],
+                tech: ['Node.js', 'MySQL', 'AWS', 'Angular']
+            },
+            {
+                title: 'Virtual Hospital System',
+                description: 'Architected the backend for a system with role-based access control, enabling secure interactions between Admins, Physicians, and Patients.',
+                tags: ['full-stack'],
+                tech: ['Angular', 'CI/CD', 'Project Management']
+            },
+            {
+                title: 'User Management System',
+                description: 'Engineered the backend for a system that became the parent platform for 14 downstream software products.',
+                tags: ['full-stack'],
+                tech: ['Angular', 'CI/CD', 'IT Service Management']
+            },
+            {
+                title: 'Health and Data Software Product',
+                description: 'Fixed critical backend bugs and optimized database queries for a healthcare product used by the NHS.',
+                tags: ['full-stack'],
+                tech: ['Angular', 'Performance Tuning', 'Debugging']
+            },
+            {
+                title: 'Virtual Car Simulation (AR)',
+                description: 'Engineered an Augmented Reality game in Unity to simulate a car in the real world, demonstrating AR concepts.',
+                tags: [],
+                tech: ['C#', 'Unity 3D', 'AR Foundation']
+            }
+        ];
+
+        const experienceData = [
+            {
+                role: 'Software Engineer',
+                company: 'HiveWorx',
+                period: 'Jan 2023 – Sep 2023',
+                details: 'Developed backend services and APIs for a core user management system and a virtual hospital application, focusing on database design, security, and performance for over 14 products.'
+            },
+            {
+                role: 'MEAN Stack Developer',
+                company: 'SH Solutions',
+                period: 'Oct 2022 – Dec 2022',
+                details: 'Designed and implemented RESTful APIs and database schemas for an electronic equipment services project, focusing on backend logic and data management.'
+            },
+            {
+                role: 'MEAN Stack Developer',
+                company: 'AlfaOrigin',
+                period: 'Jun 2022 – Sep 2022',
+                details: 'Built Node.js backends for an e-learning platform and a customer management system, creating the APIs to power the frontend applications.'
+            }
+        ];
+
+        // --- MOBILE MENU ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- PROJECTS ---
+        const projectsGrid = document.getElementById('projects-grid');
+        const filterButtons = document.querySelectorAll('.project-filter-btn');
+
+        function populateProjects(filter = 'all') {
+            projectsGrid.innerHTML = '';
+            const filteredProjects = filter === 'all'
+                ? projectsData
+                : projectsData.filter(p => p.tags.includes(filter));
+
+            filteredProjects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card rounded-lg overflow-hidden fade-in';
+                
+                const tagsHTML = project.tech.map(tag => `<span class="font-mono text-xs bg-slate-800 text-cyan-400 mr-2 mb-2 px-2.5 py-1 rounded-full">${tag}</span>`).join('');
+
+                projectCard.innerHTML = `
+                    <div class="p-6">
+                        <h3 class="font-mono text-lg font-bold text-white mb-2">${project.title}</h3>
+                        <p class="text-slate-400 mb-4 text-sm h-20">${project.description}</p>
+                        <div class="flex flex-wrap pt-4 border-t border-slate-800">${tagsHTML}</div>
+                    </div>
+                `;
+                projectsGrid.appendChild(projectCard);
+            });
+            observeFadeInElements();
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                populateProjects(button.dataset.filter);
+            });
+        });
+
+        populateProjects();
+
+        // --- EXPERIENCE ---
+        const experienceTimeline = document.querySelector('#experience .relative');
+        experienceData.forEach((item, index) => {
+            const timelineItem = document.createElement('div');
+            timelineItem.className = 'relative pl-10 pb-10 fade-in';
+            if (index < experienceData.length - 1) {
+                 timelineItem.innerHTML += `<div class="absolute left-1.5 top-3 h-full w-px bg-slate-800"></div>`;
+            }
+            timelineItem.innerHTML += `
+                <div class="absolute left-0 top-1 w-4 h-4 bg-cyan-400 rounded-full border-4 border-slate-900"></div>
+                <div>
+                    <p class="font-mono text-sm text-cyan-400">${item.period}</p>
+                    <h3 class="text-lg font-bold text-white">${item.role}</h3>
+                    <p class="font-semibold text-slate-400">${item.company}</p>
+                    <p class="mt-2 text-slate-400 text-sm">${item.details}</p>
+                </div>
+            `;
+            experienceTimeline.appendChild(timelineItem);
+        });
+        
+        // --- SCROLL-BASED ANIMATIONS AND NAV HIGHLIGHTING ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function observeFadeInElements() {
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeInElements.forEach(el => observer.observe(el));
+        }
+
+        const navObserver = new IntersectionObserver((entries) => {
+             entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+        
+        sections.forEach(section => navObserver.observe(section));
+        observeFadeInElements();
+
+    });
+    </script>
+</body>
+</html>
